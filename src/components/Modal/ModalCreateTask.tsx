@@ -12,6 +12,7 @@ import {
   ModalOverlay,
   Text,
   useStyleConfig,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,6 +20,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaClipboard, FaExclamation, FaTimes, FaUser } from "react-icons/fa";
 import * as yup from "yup";
+import { useAuth } from "../../contexts/AuthContext";
+import { useTasks } from "../../contexts/TaskContext";
+import { api } from "../../services/api";
 import { theme } from "../../styles/theme";
 import { Input } from "../Form/Input";
 
@@ -45,6 +49,11 @@ export const ModalCreateTask = ({
 }: ModalErrorProps) => {
   const [loading, setLoading] = useState(false);
 
+  const { accessToken, user } = useAuth();
+  const { createTask } = useTasks();
+
+  const toast = useToast();
+
   const {
     register,
     handleSubmit,
@@ -52,6 +61,22 @@ export const ModalCreateTask = ({
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const handleCreateTask = async (data: TaskData) => {
+    const newData = { ...data, userId: user.id, completed: false };
+    setLoading(true);
+
+    createTask(newData, accessToken).then((_) => {
+      setLoading(false);
+      toast({
+        title: "Tarefa criada.",
+        description: `Sua tarefa "${data.title}" foi criada com sucesso`,
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+    });
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -67,7 +92,7 @@ export const ModalCreateTask = ({
           >
             <FaClipboard color={theme.colors.white} />
           </Center>
-          <Heading as="h2" size="md">
+          <Heading mt="1" ml="2" as="h2" size="md">
             Adicionar
           </Heading>
           <Center
@@ -84,7 +109,7 @@ export const ModalCreateTask = ({
           </Center>
         </ModalHeader>
 
-        <ModalBody as="form">
+        <ModalBody as="form" onSubmit={handleSubmit(handleCreateTask)}>
           <VStack mt="4" spacing={5}>
             <Box w="100%">
               <Input
@@ -95,7 +120,7 @@ export const ModalCreateTask = ({
               />
 
               {!errors.title && (
-                <Text ml="1" mt="1" color="gray.300">
+                <Text ml="1" mt="1" color="gray.200">
                   Ex: Estudar React- Chakra UI
                 </Text>
               )}
@@ -108,8 +133,8 @@ export const ModalCreateTask = ({
                 {...register("description")}
               />
 
-              {!errors.email && (
-                <Text ml="1" mt="1" color="gray.300">
+              {!errors.description && (
+                <Text ml="1" mt="2" color="gray.200">
                   Máximo 100 caracteres
                 </Text>
               )}
