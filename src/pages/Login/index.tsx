@@ -49,8 +49,10 @@ export const Login = () => {
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
     setLoading(true);
     signIn(values)
-      .then((response) => setLoading(false))
-      .catch((_) => {
+      .then((response) => {
+        setLoading(false);
+      })
+      .catch((err) => {
         setLoading(false);
         onOpen();
       });
