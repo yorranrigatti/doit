@@ -87,7 +87,6 @@ const TaskProvider: React.FC = ({ children }) => {
           );
           const task = tasks.find((specificTask) => specificTask.id === taskId);
 
-          console.log(task);
           if (task) {
             task.completed = true;
             setTasks([...filteredTasks, task]);
