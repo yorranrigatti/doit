@@ -64,7 +64,6 @@ export const Login = () => {
     <>
       <ModalError
         isOpen={isOpen}
-        onOpen={onOpen}
         onClose={onClose}
         error="Seu email ou senha estão incorretos!"
       />
