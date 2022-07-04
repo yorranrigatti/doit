@@ -41,6 +41,7 @@ export const Card = ({ task, onClick, ...rest }: CardProps) => {
       borderColor="gray.50"
       boxShadow="lg"
       padding="7"
+      w={["330px", "auto"]}
       {...rest}
     >
       <Flex justify="space-between">

@@ -1,4 +1,11 @@
-import { Box, Button, Center, Flex, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  useBreakpointValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { FaSearch } from "react-icons/fa";
@@ -23,11 +30,16 @@ export const SearchBox = () => {
 
   const handleSearch = ({ title }: SearchData) =>
     searchTasks(title, accessToken);
-  
+
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    md: true,
+  });
+
   return (
     <>
       <ModalCreateTask isOpen={isOpen} onClose={onClose} />
-      <Flex mt="6" w="100%" paddingX="8" paddingY="2">
+      <Flex mt="6" w="100%" paddingX={["4", "8"]} paddingY="2">
         <Flex as="form" onSubmit={handleSubmit(handleSearch)}>
           <Input
             placeholder="Pesquisar por tarefa"
@@ -61,7 +73,7 @@ export const SearchBox = () => {
           }}
           onClick={onOpen}
         >
-          Adicionar nova tarefa
+          {isWideVersion ? "Adicionar uma nova tarefa" : "Nova tarefa"}
         </Button>
       </Flex>
     </>

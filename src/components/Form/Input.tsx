@@ -64,7 +64,7 @@ export const Input = ({
 
       <InputGroup flexDirection="column">
         {Icon && (
-          <InputLeftElement color={inputVariation[variation]} h="100%">
+          <InputLeftElement color={inputVariation[variation]} mt="2.5">
             <Icon />
           </InputLeftElement>
         )}
