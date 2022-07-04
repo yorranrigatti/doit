@@ -7,7 +7,6 @@ import {
   Progress,
   Text,
   BoxProps,
-  ScaleFade,
 } from "@chakra-ui/react";
 import { FaCheck, FaTrash } from "react-icons/fa";
 import { useAuth } from "../../contexts/AuthContext";
@@ -34,16 +33,14 @@ export const Card = ({ task, onClick, ...rest }: CardProps) => {
     <Box
       cursor="pointer"
       _hover={{
-        transform: 'translateY(-7px)',
-        borderColor: 'gray.100',
+        transform: "translateY(-7px)",
+        borderColor: "gray.100",
       }}
       transition="border 0.2s, ease 0s, transform 0.2s"
       borderWidth="1px"
       borderColor="gray.50"
       boxShadow="lg"
-      minW="420px"
       padding="7"
-      onClick={onClick}
       {...rest}
     >
       <Flex justify="space-between">
@@ -70,13 +67,19 @@ export const Card = ({ task, onClick, ...rest }: CardProps) => {
             borderRadius="5px"
             borderColor="gray.200"
             onClick={() => updateTask(task.id, accessToken, user.id)}
-            bgColor={task.completed ? theme.colors.purple[800] : theme.colors.white}
+            bgColor={
+              task.completed ? theme.colors.purple[800] : theme.colors.white
+            }
           >
-            <FaCheck color={task.completed ? theme.colors.white : theme.colors.gray[200]} />
+            <FaCheck
+              color={
+                task.completed ? theme.colors.white : theme.colors.gray[200]
+              }
+            />
           </Center>
         </HStack>
       </Flex>
-      <Box w="100%" mt="4">
+      <Box w="100%" mt="4" onClick={onClick}>
         <Text noOfLines={3}>{task.description}</Text>
         <Progress
           colorScheme="purple"
