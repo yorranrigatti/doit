@@ -1,12 +1,12 @@
-import jwtDecode from "jwt-decode";
+import jwtDecode from 'jwt-decode';
 import React, {
   createContext,
   ReactText,
   useCallback,
   useContext,
   useState,
-} from "react";
-import { api } from "../services/api";
+} from 'react';
+import { api } from '../services/api';
 
 interface SignInCredentials {
   email: string;
@@ -40,16 +40,16 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
-
   return context;
 };
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const accessToken = localStorage.getItem("@Doit:accessToken");
-    const user = localStorage.getItem("@Doit:user");
+    const accessToken = localStorage.getItem('@Doit:accessToken');
+    const user = localStorage.getItem('@Doit:user');
+
     if (accessToken && user) {
       return { accessToken, user: JSON.parse(user) };
     }
@@ -58,22 +58,22 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post<AuthState>("/login", {
+    const response = await api.post<AuthState>('/login', {
       email,
       password,
     });
 
     const { accessToken, user } = response.data;
 
-    localStorage.setItem("@Doit:accessToken", accessToken);
-    localStorage.setItem("@Doit:user", JSON.stringify(user));
+    localStorage.setItem('@Doit:accessToken', accessToken);
+    localStorage.setItem('@Doit:user', JSON.stringify(user));
 
     setData({ accessToken, user });
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem("@Doit:accessToken");
-    localStorage.removeItem("@Doit:user");
+    localStorage.removeItem('@Doit:accessToken');
+    localStorage.removeItem('@Doit:user');
 
     setData({} as AuthState);
   }, []);

@@ -8,20 +8,20 @@ import {
   useDisclosure,
   Skeleton,
   Stack,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { FaClipboard } from "react-icons/fa";
-import { Card } from "../../components/Card";
-import { Header } from "../../components/Header";
-import { SearchBox } from "../../components/Form/Searchbox";
-import { useTasks } from "../../contexts/TaskContext";
-import { useAuth } from "../../contexts/AuthContext";
-import { CardSkeleton } from "../../components/Skeleton/CardSkeleton";
-import { ModalTaskDetail } from "../../components/Modal/ModalTaskDetail";
-import { ModalCreateTask } from "../../components/Modal/ModalCreateTask";
-import { TaskList } from "./TaskList";
-import { FirstTask } from "./FirstTask";
-import { NotFound } from "./NotFound";
+} from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { FaClipboard } from 'react-icons/fa';
+import { Card } from '../../components/Card';
+import { Header } from '../../components/Header';
+import { SearchBox } from '../../components/Form/Searchbox';
+import { useTasks } from '../../contexts/TaskContext';
+import { useAuth } from '../../contexts/AuthContext';
+import { CardSkeleton } from '../../components/Skeleton/CardSkeleton';
+import { ModalTaskDetail } from '../../components/Modal/ModalTaskDetail';
+import { ModalCreateTask } from '../../components/Modal/ModalCreateTask';
+import { TaskList } from './TaskList';
+import { FirstTask } from './FirstTask';
+import { NotFound } from './NotFound';
 
 interface Task {
   id: string;
@@ -33,7 +33,10 @@ interface Task {
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [actualTask, setActualTask] = useState({} as Task);
-  const { tasks, loadTasks, notFound, taskNotFound } = useTasks();
+
+  const {
+ tasks, loadTasks, notFound, taskNotFound,
+} = useTasks();
 
   const { user, accessToken } = useAuth();
 
@@ -61,11 +64,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      <ModalTaskDetail
-        task={actualTask}
-        onClose={onDetailClose}
-        isOpen={isDetailOpen}
-      />
+      <ModalTaskDetail task={actualTask} onClose={onDetailClose} isOpen={isDetailOpen} />
 
       {tasks.length === 0 && !loading ? (
         <FirstTask />

@@ -1,4 +1,4 @@
-import { FieldError } from "react-hook-form";
+import { FieldError } from 'react-hook-form';
 import {
   FormControl,
   FormErrorMessage,
@@ -7,9 +7,11 @@ import {
   TextareaProps as ChakraTextAreaProps,
   InputLeftElement,
   InputGroup,
-} from "@chakra-ui/react";
-import { IconType } from "react-icons/lib";
-import { useRef, useState, useCallback, useEffect } from "react";
+} from '@chakra-ui/react';
+import { IconType } from 'react-icons/lib';
+import {
+ useRef, useState, useCallback, useEffect,
+} from 'react';
 
 interface TextareaProps extends ChakraTextAreaProps {
   name: string;
@@ -23,38 +25,34 @@ type inputVariationOptions = {
 };
 
 const inputVariation: inputVariationOptions = {
-  error: "red.500",
-  default: "gray.200",
-  focus: "purple.800",
-  filled: "green.500",
+  error: 'red.500',
+  default: 'gray.200',
+  focus: 'purple.800',
+  filled: 'green.500',
 };
 
 export const TextArea = ({
-  name,
-  label,
-  icon: Icon,
-  error = null,
-  ...rest
+ name, label, icon: Icon, error = null, ...rest
 }: TextareaProps) => {
-  const [variation, setVariation] = useState("default");
+  const [variation, setVariation] = useState('default');
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (error) {
-      return setVariation("error");
+      return setVariation('error');
     }
   }, [error]);
 
   const handleInputFocus = useCallback(() => {
     if (!error) {
-      setVariation("focus");
+      setVariation('focus');
     }
   }, [error]);
 
   const handleInputBlur = useCallback(() => {
     if (inputRef.current?.value && !error) {
-      return setVariation("filled");
+      return setVariation('filled');
     }
   }, [error]);
 
@@ -78,17 +76,15 @@ export const TextArea = ({
           color={inputVariation[variation]}
           bg="gray.50"
           variant="outline"
-          _hover={{ bgColor: "gray.100" }}
-          _placeholder={{ color: "gray.200" }}
+          _hover={{ bgColor: 'gray.100' }}
+          _placeholder={{ color: 'gray.200' }}
           size="lg"
           h="60px"
           ref={inputRef}
           {...rest}
         />
 
-        {!!error && (
-          <FormErrorMessage color="red.500">{error.message}</FormErrorMessage>
-        )}
+        {!!error && <FormErrorMessage color="red.500">{error.message}</FormErrorMessage>}
       </InputGroup>
     </FormControl>
   );

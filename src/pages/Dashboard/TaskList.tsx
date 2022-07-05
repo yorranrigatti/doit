@@ -1,8 +1,8 @@
-import { Box, Grid } from "@chakra-ui/react";
-import { Card } from "../../components/Card";
-import { SearchBox } from "../../components/Form/Searchbox";
-import { Header } from "../../components/Header";
-import { CardSkeleton } from "../../components/Skeleton/CardSkeleton";
+import { Box, Grid } from '@chakra-ui/react';
+import { Card } from '../../components/Card';
+import { SearchBox } from '../../components/Form/Searchbox';
+import { Header } from '../../components/Header';
+import { CardSkeleton } from '../../components/Skeleton/CardSkeleton';
 
 interface Task {
   id: string;
@@ -26,15 +26,13 @@ export const TaskList = ({ tasks, loading, handleClick }: TaskListProps) => (
       w="100%"
       templateColumns="repeat(auto-fill, minmax(420px, 1fr))"
       gap={10}
-      paddingX={["6", "6", "8"]}
+      paddingX={['6', '6', '8']}
       mt="8"
     >
       {loading ? (
         <CardSkeleton repeatCount={6} />
       ) : (
-        tasks.map((task) => (
-          <Card onClick={() => handleClick(task)} task={task} key={task.id} />
-        ))
+        tasks.map((task) => <Card onClick={() => handleClick(task)} task={task} key={task.id} />)
       )}
     </Grid>
   </Box>

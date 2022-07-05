@@ -1,10 +1,10 @@
-import { Switch } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { Dashboard } from "../pages/Dashboard";
-import { Login } from "../pages/Login";
-import { NotFound } from "../pages/NotFound";
-import { Signup } from "../pages/Signup";
-import { Route } from "./routes";
+import { Switch } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { Dashboard } from '../pages/Dashboard';
+import { Login } from '../pages/Login';
+import { NotFound } from '../pages/NotFound';
+import { Signup } from '../pages/Signup';
+import { Route } from './routes';
 
 export const Routes = () => {
   const { accessToken } = useAuth();

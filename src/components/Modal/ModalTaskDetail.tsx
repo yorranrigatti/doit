@@ -12,11 +12,13 @@ import {
   ModalOverlay,
   Progress,
   Text,
-} from "@chakra-ui/react";
-import { FaCheck, FaCube, FaTimes, FaTrash, FaUser } from "react-icons/fa";
-import { useAuth } from "../../contexts/AuthContext";
-import { useTasks } from "../../contexts/TaskContext";
-import { theme } from "../../styles/theme";
+} from '@chakra-ui/react';
+import {
+ FaCheck, FaCube, FaTimes, FaTrash, FaUser,
+} from 'react-icons/fa';
+import { useAuth } from '../../contexts/AuthContext';
+import { useTasks } from '../../contexts/TaskContext';
+import { theme } from '../../styles/theme';
 
 interface Task {
   id: string;
@@ -46,13 +48,7 @@ export const ModalTaskDetail = ({ isOpen, onClose, task }: ModalErrorProps) => {
       <ModalContent bg="white" color="gray.800">
         <ModalHeader display="flex" justifyContent="space-between">
           <HStack>
-            <Center
-              w="32px"
-              h="32px"
-              bg="purple.500"
-              fontSize="18px"
-              borderRadius="md"
-            >
+            <Center w="32px" h="32px" bg="purple.500" fontSize="18px" borderRadius="md">
               <FaCube color={theme.colors.white} />
             </Center>
             <Heading mt="1" ml="2" as="h2" size="md">
@@ -79,15 +75,9 @@ export const ModalTaskDetail = ({ isOpen, onClose, task }: ModalErrorProps) => {
               borderRadius="5px"
               borderColor="gray.200"
               onClick={() => updateTask(task.id, accessToken, user.id)}
-              bgColor={
-                task.completed ? theme.colors.purple[800] : theme.colors.white
-              }
+              bgColor={task.completed ? theme.colors.purple[800] : theme.colors.white}
             >
-              <FaCheck
-                color={
-                  task.completed ? theme.colors.white : theme.colors.gray[200]
-                }
-              />
+              <FaCheck color={task.completed ? theme.colors.white : theme.colors.gray[200]} />
             </Center>
             <Center
               as="button"
@@ -113,11 +103,7 @@ export const ModalTaskDetail = ({ isOpen, onClose, task }: ModalErrorProps) => {
           </Box>
         </ModalBody>
         <Box padding="6">
-          <Progress
-            colorScheme="purple"
-            value={task.completed ? 100 : 10}
-            bgColor="gray.100"
-          />
+          <Progress colorScheme="purple" value={task.completed ? 100 : 10} bgColor="gray.100" />
           <Text color="gray.200" mt="3">
             07 march 2021
           </Text>

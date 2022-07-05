@@ -1,12 +1,11 @@
-import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import {
-  DeepMap,
-  FieldError,
-  FieldValues,
-  UseFormRegister,
-} from "react-hook-form";
-import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
-import { Input } from "../../components/Form/Input";
+ Box, Button, Heading, Text, VStack,
+} from '@chakra-ui/react';
+import {
+ DeepMap, FieldError, FieldValues, UseFormRegister,
+} from 'react-hook-form';
+import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
+import { Input } from '../../components/Form/Input';
 
 interface FormProps {
   handleSignup: () => void;
@@ -16,14 +15,11 @@ interface FormProps {
 }
 
 export const SignupForm = ({
-  handleSignup,
-  errors,
-  register,
-  loading,
+ handleSignup, errors, register, loading,
 }: FormProps) => (
   <Box
-    mt={["4", "4", "0"]}
-    width={["100%", "100%", "40%", "40%"]}
+    mt={['4', '4', '0']}
+    width={['100%', '100%', '40%', '40%']}
     padding="30px 15px"
     border="3px solid"
     borderColor="gray.100"
@@ -42,7 +38,7 @@ export const SignupForm = ({
         label="Nome"
         error={errors.name}
         icon={FaUser}
-        {...register("name")}
+        {...register('name')}
       />
       <Box w="100%">
         <Input
@@ -51,7 +47,7 @@ export const SignupForm = ({
           label="Email"
           error={errors.email}
           icon={FaEnvelope}
-          {...register("email")}
+          {...register('email')}
         />
 
         {!errors.email && (
@@ -67,7 +63,7 @@ export const SignupForm = ({
         label="Senha"
         error={errors.password}
         icon={FaLock}
-        {...register("password")}
+        {...register('password')}
       />
       <Input
         type="password"
@@ -75,7 +71,7 @@ export const SignupForm = ({
         label="Confirmação de senha"
         error={errors.confirm_password}
         icon={FaLock}
-        {...register("confirm_password")}
+        {...register('confirm_password')}
       />
     </VStack>
     <Button
@@ -87,7 +83,7 @@ export const SignupForm = ({
       h="60px"
       borderRadius="8px"
       _hover={{
-        background: "purple.900",
+        background: 'purple.900',
       }}
       isLoading={loading}
     >

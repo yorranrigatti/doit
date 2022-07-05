@@ -14,18 +14,20 @@ import {
   useStyleConfig,
   useToast,
   VStack,
-} from "@chakra-ui/react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { FaClipboard, FaExclamation, FaTimes, FaUser } from "react-icons/fa";
-import * as yup from "yup";
-import { useAuth } from "../../contexts/AuthContext";
-import { useTasks } from "../../contexts/TaskContext";
-import { api } from "../../services/api";
-import { theme } from "../../styles/theme";
-import { Input } from "../Form/Input";
-import { TextArea } from "../Form/TextArea";
+} from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import {
+ FaClipboard, FaExclamation, FaTimes, FaUser,
+} from 'react-icons/fa';
+import * as yup from 'yup';
+import { useAuth } from '../../contexts/AuthContext';
+import { useTasks } from '../../contexts/TaskContext';
+import { api } from '../../services/api';
+import { theme } from '../../styles/theme';
+import { Input } from '../Form/Input';
+import { TextArea } from '../Form/TextArea';
 
 interface ModalErrorProps {
   isOpen: boolean;
@@ -38,8 +40,8 @@ interface TaskData {
 }
 
 const schema = yup.object().shape({
-  title: yup.string().required("Campo obrigatório!"),
-  description: yup.string().required("Campo obrigatório!"),
+  title: yup.string().required('Campo obrigatório!'),
+  description: yup.string().required('Campo obrigatório!'),
 });
 
 export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
@@ -67,14 +69,14 @@ export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
     createTask(newData, accessToken).then((_) => {
       setLoading(false);
       toast({
-        title: "Tarefa criada.",
+        title: 'Tarefa criada.',
         description: `Sua tarefa "${data.title}" foi criada com sucesso`,
-        status: "success",
+        status: 'success',
         duration: 5000,
         isClosable: true,
       });
     });
-    
+
     onClose();
   };
 
@@ -83,13 +85,7 @@ export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
       <ModalOverlay />
       <ModalContent bg="white" color="gray.800">
         <ModalHeader display="flex">
-          <Center
-            w="32px"
-            h="32px"
-            bg="purple.500"
-            fontSize="18px"
-            borderRadius="md"
-          >
+          <Center w="32px" h="32px" bg="purple.500" fontSize="18px" borderRadius="md">
             <FaClipboard color={theme.colors.white} />
           </Center>
           <Heading mt="1" ml="2" as="h2" size="md">
@@ -116,11 +112,11 @@ export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
                 placeholder="Digite seu título"
                 label="Título"
                 error={errors.title}
-                {...register("title")}
+                {...register('title')}
               />
 
               {!errors.title && (
-                <Text ml="1" mt="1" color="gray.200">
+                <Text ml="1" mt="2" color="gray.200">
                   Ex: Estudar React- Chakra UI
                 </Text>
               )}
@@ -130,7 +126,7 @@ export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
                 placeholder="Digite sua descrição"
                 label="Descrição"
                 error={errors.description}
-                {...register("description")}
+                {...register('description')}
               />
 
               {!errors.description && (
@@ -149,7 +145,7 @@ export const ModalCreateTask = ({ isOpen, onClose }: ModalErrorProps) => {
             h="60px"
             borderRadius="8px"
             _hover={{
-              background: "purple.600",
+              background: 'purple.600',
             }}
             isLoading={loading}
           >

@@ -1,13 +1,10 @@
-import { Box, Skeleton, SkeletonProps } from "@chakra-ui/react";
+import { Box, Skeleton, SkeletonProps } from '@chakra-ui/react';
 
 interface CardSkeletonProps extends SkeletonProps {
   repeatCount: number;
 }
 
-export const CardSkeleton = ({
-  repeatCount = 1,
-  ...rest
-}: CardSkeletonProps) => {
+export const CardSkeleton = ({ repeatCount = 1, ...rest }: CardSkeletonProps) => {
   const howMany = Array.from(Array(repeatCount).keys());
 
   return (

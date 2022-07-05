@@ -1,21 +1,12 @@
 import {
-  Box,
-  Center,
-  Text,
-  Heading,
-  Button,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { FaClipboard } from "react-icons/fa";
-import { Header } from "../../components/Header";
-import { ModalCreateTask } from "../../components/Modal/ModalCreateTask";
+ Box, Center, Text, Heading, Button, useDisclosure,
+} from '@chakra-ui/react';
+import { FaClipboard } from 'react-icons/fa';
+import { Header } from '../../components/Header';
+import { ModalCreateTask } from '../../components/Modal/ModalCreateTask';
 
 export const FirstTask = () => {
-  const {
-    onClose: onCreateClose,
-    onOpen: onCreateOpen,
-    isOpen: isCreateopen,
-  } = useDisclosure();
+  const { onClose: onCreateClose, onOpen: onCreateOpen, isOpen: isCreateopen } = useDisclosure();
 
   return (
     <>
@@ -50,7 +41,7 @@ export const FirstTask = () => {
           mt="6"
           bgColor="purple.800"
           color="white"
-          _hover={{ bg: "purple.900" }}
+          _hover={{ bg: 'purple.900' }}
           onClick={onCreateOpen}
         >
           Criar sua primeira tarefa

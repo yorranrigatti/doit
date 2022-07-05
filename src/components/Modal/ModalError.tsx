@@ -9,9 +9,9 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { FaExclamation } from "react-icons/fa";
-import { theme } from "../../styles/theme";
+} from '@chakra-ui/react';
+import { FaExclamation } from 'react-icons/fa';
+import { theme } from '../../styles/theme';
 
 interface ModalErrorProps {
   isOpen: boolean;
@@ -24,16 +24,12 @@ export const ModalError = ({ isOpen, onClose, error }: ModalErrorProps) => (
     <ModalOverlay />
     <ModalContent bg="white" color="gray.800">
       <ModalHeader display="flex">
-        <FaExclamation color={theme.colors.red["500"]} />
+        <FaExclamation color={theme.colors.red['500']} />
         <Heading as="h2" size="md">
           Oops!
         </Heading>
       </ModalHeader>
-      <ModalCloseButton
-        background="red.500"
-        color="white"
-        _hover={{ background: "red.600" }}
-      />
+      <ModalCloseButton background="red.500" color="white" _hover={{ background: 'red.600' }} />
       <ModalBody textAlign="center">
         <Text>{error}</Text>
       </ModalBody>
@@ -43,7 +39,7 @@ export const ModalError = ({ isOpen, onClose, error }: ModalErrorProps) => (
           color="white"
           w="100%"
           onClick={onClose}
-          _hover={{ background: "red.600" }}
+          _hover={{ background: 'red.600' }}
         >
           Tentar novamente
         </Button>

@@ -11,9 +11,9 @@ import {
   ModalOverlay,
   Text,
   Center,
-} from "@chakra-ui/react";
-import { FaExclamation, FaTimes } from "react-icons/fa";
-import { theme } from "../../styles/theme";
+} from '@chakra-ui/react';
+import { FaExclamation, FaTimes } from 'react-icons/fa';
+import { theme } from '../../styles/theme';
 
 interface ModalSuccessProps {
   isOpen: boolean;
@@ -36,13 +36,7 @@ export const ModalSuccess = ({
     <ModalOverlay />
     <ModalContent padding="2" bg="white" color="gray.800">
       <ModalHeader display="flex">
-        <Center
-          w="32px"
-          h="32px"
-          bg="purple.500"
-          fontSize="18px"
-          borderRadius="md"
-        >
+        <Center w="32px" h="32px" bg="purple.500" fontSize="18px" borderRadius="md">
           <FaExclamation color={theme.colors.white} />
         </Center>
         <Heading mt="1" ml="1.5" as="h2" size="md">
@@ -71,16 +65,12 @@ export const ModalSuccess = ({
           color="white"
           w="100%"
           onClick={onClick}
-          _hover={{ background: "purple.600" }}
+          _hover={{ background: 'purple.600' }}
         >
           {buttonMessage}
         </Button>
         <Text align="center">
-          <Box
-            mt="3"
-            color="gray.300"
-            dangerouslySetInnerHTML={{ __html: secondaryText }}
-          />
+          <Box mt="3" color="gray.300" dangerouslySetInnerHTML={{ __html: secondaryText }} />
         </Text>
       </ModalFooter>
     </ModalContent>
